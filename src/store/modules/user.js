@@ -22,6 +22,7 @@ export default {
         })
           .then((res) => {
             console.log(res)
+            context.commit('setToken', res.data.token)
             resolve(res)
           })
           .catch((err) => {

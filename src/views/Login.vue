@@ -32,8 +32,10 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { User, Lock } from '@element-plus/icons'
+import { useRouter } from 'vue-router'
 
 const store = useStore()
+const router = useRouter()
 const loginRef = ref(null)
 const loginRules = ref({
   username: [
@@ -57,7 +59,9 @@ const toLogin = () => {
     if (!valid) {
       return
     }
-    store.dispatch('user/login', form.value)
+    store.dispatch('user/login', form.value).then(() => {
+      router.push('/')
+    })
   })
 }
 </script>
