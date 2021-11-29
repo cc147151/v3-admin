@@ -6,3 +6,10 @@ export const login = (data) => {
     data
   })
 }
+export const userInfo = (data = {}) => {
+  return service({
+    url: '/sys/profile',
+    method: 'GET',
+    params: data
+  })
+}

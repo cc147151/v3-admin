@@ -1,16 +1,20 @@
-import { setItem } from '../../utils/storage'
+import { setItem, getItem } from '../../utils/storage'
 import { TOKEN } from '@/constant'
-import { login } from '@/api/sys.js'
+import { login, userInfo } from '@/api/sys.js'
 import md5 from 'md5'
 export default {
   namespaced: true,
   state: {
-    token: ''
+    token: getItem(TOKEN) || '',
+    userInfo: {}
   },
   mutations: {
     setToken(state, token) {
       state.token = token
       setItem(TOKEN, token)
+    },
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   actions: {
@@ -29,6 +33,10 @@ export default {
             reject(err)
           })
       })
+    },
+    async getUserInfo(context) {
+      const { data } = await userInfo()
+      context.commit('setUserInfo', data)
     }
   }
 }

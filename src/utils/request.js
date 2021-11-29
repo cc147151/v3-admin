@@ -1,14 +1,30 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import store from '../store/index'
 // 特殊code值得操作,以reject返回
 const otherCode = [401]
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 8000
 })
+
+// 添加请求拦截器
+service.interceptors.request.use(
+  function (config) {
+    // 在发送请求之前做些什么
+    if (store.getters.token) {
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
+    return config
+  },
+  function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error)
+  }
+)
+
 service.interceptors.response.use(
   (response) => {
-    console.dir(ElMessage)
     const { data: res } = response
     if (response.status === 200) {
       if (otherCode.includes(res.code)) {

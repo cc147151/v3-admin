@@ -54,14 +54,13 @@ const loginRules = ref({
   ]
 })
 const form = ref({ username: '', password: '' })
-const toLogin = () => {
-  loginRef.value.validate((valid) => {
+const toLogin = async () => {
+  loginRef.value.validate(async (valid) => {
     if (!valid) {
       return
     }
-    store.dispatch('user/login', form.value).then(() => {
-      router.push('/')
-    })
+    await store.dispatch('user/login', form.value)
+    router.push('/')
   })
 }
 </script>
