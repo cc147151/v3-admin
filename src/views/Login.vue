@@ -13,7 +13,11 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="form.password" placeholder="请输入密码">
+          <el-input
+            @keydown.enter="toLogin()"
+            v-model="form.password"
+            placeholder="请输入密码"
+          >
             <template #prefix>
               <div class="nameIcon">
                 <el-icon><lock /></el-icon>

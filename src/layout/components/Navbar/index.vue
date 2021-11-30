@@ -19,14 +19,19 @@
             <a target="_blank" href="">
               <el-dropdown-item>课程主页</el-dropdown-item>
             </a>
-            <el-dropdown-item divided> 退出登录 </el-dropdown-item>
+            <el-dropdown-item @click="loginOut" divided> 退出登录 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '@/store'
+const loginOut = () => {
+  store.dispatch('user/loginOut')
+}
+</script>
 <style lang="scss" scoped>
 .navbar {
   display: flex;

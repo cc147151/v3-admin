@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '../store/index'
 // 特殊code值得操作,以reject返回
-const otherCode = [401]
+const otherCode = [2001]
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 8000
@@ -38,7 +38,15 @@ service.interceptors.response.use(
     }
   },
   (err) => {
-    ElMessage.error(err.message)
+    console.log(err.response)
+    if (err.response) {
+      const { data } = err.response
+      if (data.code === 401) {
+        store.dispatch('user/loginOut')
+      }
+      ElMessage.error(data.message)
+    }
+
     return Promise.reject(err)
   }
 )
