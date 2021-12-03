@@ -3,7 +3,7 @@ import store from './store'
 
 // 白名单路由(不需要token可访问得)
 
-const whiteRoutes = ['/login']
+const whiteRoutes = ['/login', '/test']
 
 router.beforeEach((to, from, next) => {
   console.log(to.path, store.getters.token)

@@ -7,5 +7,8 @@
   </div>
 </template>
 <script setup>
+import { useRouter } from 'vue-router'
 import SidebarMenu from './SidebarMenu.vue'
+const router = useRouter()
+console.log(router.getRoutes())
 </script>
