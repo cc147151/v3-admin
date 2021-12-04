@@ -3,7 +3,7 @@ const layout = import('@/layout/index')
 /**
  * 私有路由表
  */
-const privateRoutes = [
+export const privateRoutes = [
   {
     path: '/user',
     component: layout,
@@ -101,10 +101,14 @@ const privateRoutes = [
 /**
  * 公开路由表
  */
-const publicRoutes = [
+export const publicRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index')
+  },
+  {
+    path: '/test',
+    component: () => import('@/views/Test')
   },
   {
     path: '/',

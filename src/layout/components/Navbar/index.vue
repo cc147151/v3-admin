@@ -1,6 +1,11 @@
 <template>
   <div class="navbar">
-    <div class="navLeft"></div>
+    <div class="navLeft">
+      <el-icon @click="sidebarOpenedFun" size="25" class="iconExpand">
+        <expand v-show="$store.getters.sidebarOpened" />
+        <fold v-show="!$store.getters.sidebarOpened" />
+      </el-icon>
+    </div>
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -19,7 +24,9 @@
             <a target="_blank" href="">
               <el-dropdown-item>课程主页</el-dropdown-item>
             </a>
-            <el-dropdown-item @click="loginOut" divided> 退出登录 </el-dropdown-item>
+            <el-dropdown-item @click="loginOut" divided>
+              退出登录
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -27,9 +34,13 @@
   </div>
 </template>
 <script setup>
+import { Expand, Fold } from '@element-plus/icons'
 import store from '@/store'
 const loginOut = () => {
   store.dispatch('user/loginOut')
+}
+const sidebarOpenedFun = () => {
+  store.dispatch('app/changeSideBarOpened')
 }
 </script>
 <style lang="scss" scoped>
@@ -41,6 +52,11 @@ const loginOut = () => {
   height: 50px;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  .navLeft {
+    .iconExpand {
+      cursor: pointer;
+    }
+  }
   .right-menu {
     display: flex;
     align-items: center;

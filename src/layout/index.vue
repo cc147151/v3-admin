@@ -1,5 +1,10 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    :class="[
+      'app-wrapper',
+      $store.getters.sidebarOpened ? 'hideSidebar' : ''
+    ]"
+  >
     <sidebar
       class="sidebar-container"
       :style="{ backgroundColor: variables.menuBg }"
@@ -35,5 +40,10 @@ import AppMain from './components/AppMain'
   right: 0;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
+}
+.hideSidebar {
+  .fixed-header {
+    width: calc(100% - #{$hideSideBarWidth});
+  }
 }
 </style>
