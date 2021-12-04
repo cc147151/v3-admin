@@ -179,3 +179,16 @@
     }
   }
 }
+.el-sub-menu .el-menu-item {
+  background-color: #1f2d3d;
+  &:hover {
+    background-color: $subMenuHover !important;
+  }
+}
+// menu hover
+.submenu-title-noDropdown,
+.el-sub-menu__title {
+  &:hover {
+    background-color: $menuHover !important;
+  }
+}
