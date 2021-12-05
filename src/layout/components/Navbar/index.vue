@@ -5,6 +5,7 @@
         <expand v-show="$store.getters.sidebarOpened" />
         <fold v-show="!$store.getters.sidebarOpened" />
       </el-icon>
+      <Breadcrumb />
     </div>
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -36,12 +37,14 @@
 <script setup>
 import { Expand, Fold } from '@element-plus/icons'
 import store from '@/store'
+import Breadcrumb from './Breadcrumb.vue'
 const loginOut = () => {
   store.dispatch('user/loginOut')
 }
 const sidebarOpenedFun = () => {
   store.dispatch('app/changeSideBarOpened')
 }
+
 </script>
 <style lang="scss" scoped>
 .navbar {
@@ -53,6 +56,8 @@ const sidebarOpenedFun = () => {
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   .navLeft {
+    display: flex;
+    align-items: center;
     .iconExpand {
       cursor: pointer;
     }
@@ -78,9 +83,6 @@ const sidebarOpenedFun = () => {
           background: rgba(0, 0, 0, 0.025);
         }
       }
-    }
-    ::v-deep .el-avatar {
-      // width: 35px !important;
     }
     ::v-deep .avatar-container {
       cursor: pointer;

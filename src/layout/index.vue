@@ -1,9 +1,6 @@
 <template>
   <div
-    :class="[
-      'app-wrapper',
-      $store.getters.sidebarOpened ? 'hideSidebar' : ''
-    ]"
+    :class="['app-wrapper', $store.getters.sidebarOpened ? 'hideSidebar' : '']"
   >
     <sidebar
       class="sidebar-container"

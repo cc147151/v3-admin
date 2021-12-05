@@ -5,6 +5,47 @@ const layout = import('@/layout/index')
  */
 export const privateRoutes = [
   {
+    path: '/marking',
+    component: layout,
+    redirect: '/marking/active',
+    meta: {
+      title: 'marking'
+    },
+    children: [
+      {
+        path: '/marking/active',
+        meta: {
+          title: 'active'
+        },
+        component: () => import('@/views/marking/index')
+      },
+      {
+        path: '/marking/yuanDan',
+        component: () => import('@/views/marking/yuanDan.vue'),
+        redirect: '/marking/yuanDan/product',
+        meta: {
+          title: 'yuanDan'
+        },
+        children: [
+          {
+            path: '/marking/yuanDan/product',
+            component: () => import('@/views/marking/product.vue'),
+            meta: {
+              title: 'product'
+            }
+          },
+          {
+            path: '/marking/yuanDan/list',
+            component: () => import('@/views/marking/list.vue'),
+            meta: {
+              title: 'list'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     path: '/user',
     component: layout,
     redirect: '/user/manage',
