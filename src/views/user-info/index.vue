@@ -1,5 +1,5 @@
 <template>
-  <div class="">用户详情</div>
+  <div class="">用户详情{{ $t("message.hello") }}</div>
 </template>
 
 <script setup>

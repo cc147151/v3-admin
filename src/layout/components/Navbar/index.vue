@@ -8,6 +8,7 @@
       <Breadcrumb />
     </div>
     <div class="right-menu">
+      <LangSelect class="mr20"/>
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
@@ -38,13 +39,13 @@
 import { Expand, Fold } from '@element-plus/icons'
 import store from '@/store'
 import Breadcrumb from './Breadcrumb.vue'
+import LangSelect from '@/components/LangSelect/index.vue'
 const loginOut = () => {
   store.dispatch('user/loginOut')
 }
 const sidebarOpenedFun = () => {
   store.dispatch('app/changeSideBarOpened')
 }
-
 </script>
 <style lang="scss" scoped>
 .navbar {
