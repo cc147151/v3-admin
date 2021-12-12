@@ -1,4 +1,3 @@
-import variables from '@/styles/variables.scss'
 export default {
   token: (state) => state.user.token,
   userInfo: (state) => state.user.userInfo,
@@ -6,6 +5,6 @@ export default {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
   language: (state) => state.app.language,
-  cssVar: state => variables,
-  sidebarOpened: state => state.app.sidebarOpened
+  cssVar: (state) => state.app.cssVar,
+  sidebarOpened: (state) => state.app.sidebarOpened
 }

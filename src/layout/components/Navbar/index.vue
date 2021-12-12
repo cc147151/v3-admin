@@ -8,6 +8,7 @@
       <Breadcrumb />
     </div>
     <div class="right-menu">
+      <Theme />
       <LangSelect class="mr20"/>
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -40,6 +41,7 @@ import { Expand, Fold } from '@element-plus/icons'
 import store from '@/store'
 import Breadcrumb from './Breadcrumb.vue'
 import LangSelect from '@/components/LangSelect/index.vue'
+import Theme from '@/components/Theme/index.vue'
 const loginOut = () => {
   store.dispatch('user/loginOut')
 }
