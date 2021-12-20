@@ -45,9 +45,25 @@ service.interceptors.response.use(
         store.dispatch('user/loginOut')
       }
       ElMessage.error(data.message)
+      return Promise.reject(err)
     }
 
-    return Promise.reject(err)
+    // 没有response 例如超时，无网络
+    if (err.message) {
+      if (err.message.includes('timeout')) {
+        ElMessage.error('网络超时噢!')
+        return Promise.reject(err)
+      }
+      if (err.message === 'Network Error') {
+        ElMessage.error('网络连接失败')
+        return Promise.reject(err)
+      }
+      ElMessage.error(err.message)
+      return Promise.reject(err)
+    } else {
+      ElMessage.error('网络错误')
+      return Promise.reject(err)
+    }
   }
 )
 export default service
