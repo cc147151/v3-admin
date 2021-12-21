@@ -6,7 +6,6 @@
   >
     <template #title>
       <menu-item :title="route.meta.title"></menu-item>
-
     </template>
     <!-- 循环渲染 -->
     <sidebar-item
@@ -15,9 +14,11 @@
       :route="item"
     ></sidebar-item>
   </el-sub-menu>
-  <el-menu-item v-else :index="route.path">
-    <menu-item :title="route.meta && route.meta.title"></menu-item>
-  </el-menu-item>
+  <div v-else>
+    <el-menu-item v-if="route.meta && route.meta.title" :index="route.path">
+      <menu-item :title="route.meta && route.meta.title"></menu-item>
+    </el-menu-item>
+  </div>
 </template>
 <script setup>
 import { defineProps } from 'vue'

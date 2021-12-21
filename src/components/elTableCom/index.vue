@@ -10,11 +10,7 @@
           </el-table-column>
         </template>
         <template v-else>
-          <el-table-column
-            :key="index"
-            v-bind="item"
-            :align="'center'"
-          ></el-table-column>
+          <el-table-column :key="index" v-bind="item" :align="'center'"></el-table-column>
         </template>
       </template>
     </el-table>

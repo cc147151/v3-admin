@@ -1,5 +1,5 @@
 <template>
-  <div><span>yuanDan</span>
+  <div>
   <router-view />
   </div>
 </template>

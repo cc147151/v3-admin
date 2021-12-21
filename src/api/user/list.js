@@ -4,8 +4,20 @@ export const roleList = (data) => {
     url: '/role/list'
   })
 }
-export const setPermission = (id) => {
+export const permissionList = () => {
+  return service({
+    url: '/permission/list'
+  })
+}
+export const rolePermission = (id) => {
   return service({
     url: `/role/permission/${id}`
+  })
+}
+export const setPermission = (data) => {
+  return service({
+    method: 'post',
+    url: '/role/distribute-permission',
+    data
   })
 }

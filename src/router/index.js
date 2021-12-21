@@ -50,7 +50,7 @@ export const privateRoutes = [
     component: layout,
     redirect: '/user/manage',
     meta: {
-      title: 'user',
+      title: '用户',
       icon: 'personnel'
     },
     children: [
@@ -58,7 +58,7 @@ export const privateRoutes = [
         path: '/user/manage',
         component: () => import('@/views/user-manage/index'),
         meta: {
-          title: 'userManage',
+          title: '用户管理',
           icon: 'personnel-manage'
         }
       },
@@ -66,7 +66,7 @@ export const privateRoutes = [
         path: '/user/role',
         component: () => import('@/views/role-list/index'),
         meta: {
-          title: 'roleList',
+          title: '角色列表',
           icon: 'role'
         }
       },
@@ -74,25 +74,19 @@ export const privateRoutes = [
         path: '/user/permission',
         component: () => import('@/views/permission-list/index'),
         meta: {
-          title: 'permissionList',
+          title: '权限列表',
           icon: 'permission'
         }
       },
       {
         path: '/user/info/:id',
         name: 'userInfo',
-        component: () => import('@/views/user-info/index'),
-        meta: {
-          title: 'userInfo'
-        }
+        component: () => import('@/views/user-info/index')
       },
       {
         path: '/user/import',
         name: 'import',
-        component: () => import('@/views/import/index'),
-        meta: {
-          title: 'excelImport'
-        }
+        component: () => import('@/views/import/index')
       }
     ]
   },
@@ -101,7 +95,7 @@ export const privateRoutes = [
     component: layout,
     redirect: '/article/ranking',
     meta: {
-      title: 'article',
+      title: '文章',
       icon: 'article'
     },
     children: [
@@ -109,31 +103,25 @@ export const privateRoutes = [
         path: '/article/ranking',
         component: () => import('@/views/article-ranking/index'),
         meta: {
-          title: 'articleRanking',
+          title: '文章排名',
           icon: 'article-ranking'
         }
       },
       {
         path: '/article/:id',
-        component: () => import('@/views/article-detail/index'),
-        meta: {
-          title: 'articleDetail'
-        }
+        component: () => import('@/views/article-detail/index')
       },
       {
         path: '/article/create',
         component: () => import('@/views/article-create/index'),
         meta: {
-          title: 'articleCreate',
+          title: '创建文章',
           icon: 'article-create'
         }
       },
       {
         path: '/article/editor/:id',
-        component: () => import('@/views/article-create/index'),
-        meta: {
-          title: 'articleEditor'
-        }
+        component: () => import('@/views/article-create/index')
       }
     ]
   }
