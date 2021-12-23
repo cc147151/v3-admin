@@ -1,7 +1,7 @@
 <template>
   <div class="">
     角色列表
-    <elTableCom :tableData="tableData" :tableColumn="tableColumn">
+    <ElTableCom :tableData="tableData" :tableColumn="tableColumn">
       <template v-slot:action="{ slotObj }">
         <div>
           <el-button
@@ -14,7 +14,7 @@
           >
         </div>
       </template>
-    </elTableCom>
+    </ElTableCom>
     <setPermissions v-model="dialogVisible" :id="id" />
   </div>
 </template>
@@ -22,7 +22,7 @@
 <script setup>
 import { roleList } from '@/api/user/list'
 import { onMounted, ref } from 'vue'
-import elTableCom from '@/components/elTableCom'
+import ElTableCom from '@/components/ElTableCom'
 import setPermissions from './components/setPermissions.vue'
 const tableColumn = [
   { prop: 'id', label: '序号' },

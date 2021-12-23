@@ -10,16 +10,44 @@
           </el-table-column>
         </template>
         <template v-else>
-          <el-table-column :key="index" v-bind="item" :align="'center'"></el-table-column>
+          <el-table-column
+            :key="index"
+            v-bind="item"
+            :align="'center'"
+          ></el-table-column>
         </template>
       </template>
     </el-table>
+    <el-pagination
+      :currentPagee="currentPage"
+      :page-sizes="pageSizes"
+      :page-size="pageSize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
+    </el-pagination>
   </div>
 </template>
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, defineEmits, ref } from 'vue'
 defineProps({
   tableData: Array,
-  tableColumn: Array
+  tableColumn: Array,
+  total: Number
 })
+const emits = defineEmits(['getData'])
+const currentPage = ref(1)
+const pageSize = ref(10)
+const pageSizes = ref([10, 20, 30])
+const handleSizeChange = (val) => {
+  pageSize.value = val
+  currentPage.value = 1
+  emits('getData', currentPage.value, pageSize.value)
+}
+const handleCurrentChange = (val) => {
+  currentPage.value = val
+  emits('getData', currentPage.value, pageSize.value)
+}
 </script>

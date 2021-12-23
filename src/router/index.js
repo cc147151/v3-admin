@@ -1,4 +1,13 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouterView } from 'vue-router'
+const RouteView = {
+  render() {
+    return (
+      <>
+        <RouterView></RouterView>
+      </>
+    )
+  }
+}
 const layout = import('@/layout/index')
 /**
  * 私有路由表
@@ -21,7 +30,7 @@ export const privateRoutes = [
       },
       {
         path: '/marking/yuanDan',
-        component: () => import('@/views/marking/yuanDan.vue'),
+        component: RouteView,
         redirect: '/marking/yuanDan/product',
         meta: {
           title: 'yuanDan'
