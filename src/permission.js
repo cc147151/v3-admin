@@ -5,14 +5,22 @@ import store from './store'
 
 const whiteRoutes = ['/login', '/test']
 
-router.beforeEach((to, from, next) => {
-  console.log(to.path, store.getters.token)
+router.beforeEach(async (to, from, next) => {
   if (store.getters.token) {
     if (to.path === '/login') {
       return next('/')
     }
     if (!store.getters.hasUserInfo) {
-      store.dispatch('user/getUserInfo')
+      const { permission } = await store.dispatch('user/getUserInfo')
+      const privateRoutesArr = await store.dispatch(
+        'permission/getMenus',
+        permission.menus
+      )
+      privateRoutesArr.map((item) => {
+        router.addRoute(item)
+      })
+      // 添加完动态路由之后，需要在进行一次主动跳转
+      return next(to.path)
     }
     next()
   } else {

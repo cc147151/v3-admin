@@ -16,7 +16,6 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 const pathArr = computed(() => {
-  console.log(useRoute().matched)
   return useRoute().matched.filter((item) => item.meta.title)
 })
 </script>

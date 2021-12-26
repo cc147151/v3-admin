@@ -1,41 +1,57 @@
 <template>
-  <div class="elTable" style="width: 100%">
-    <el-table :data="tableData" border stripe style="width: 100%">
-      <template v-for="(item, index) of tableColumn">
-        <template v-if="item.slot">
-          <el-table-column :key="index" v-bind="item" :align="'center'">
-            <template #default="scope">
-              <slot :name="item.prop" :slotObj="scope.row" />
-            </template>
-          </el-table-column>
+  <div class="elTableCom" style="width: 100%">
+    <div class="tableBox">
+      <el-table
+        :data="tableData"
+        border
+        stripe
+        height="100%"
+        style="width: 100%"
+      >
+        <template v-for="(item, index) of tableColumn">
+          <template v-if="item.slot">
+            <el-table-column :key="index" v-bind="item" :align="'center'">
+              <template #default="scope">
+                <slot :name="item.prop" :slotObj="scope.row" />
+              </template>
+            </el-table-column>
+          </template>
+          <template v-else>
+            <el-table-column
+              :key="index"
+              v-bind="item"
+              :align="'center'"
+            ></el-table-column>
+          </template>
         </template>
-        <template v-else>
-          <el-table-column
-            :key="index"
-            v-bind="item"
-            :align="'center'"
-          ></el-table-column>
-        </template>
-      </template>
-    </el-table>
-    <el-pagination
-      :currentPagee="currentPage"
-      :page-sizes="pageSizes"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    >
-    </el-pagination>
+      </el-table>
+    </div>
+    <div class="pagination" v-if="pagination">
+      <el-pagination
+        :currentPagee="currentPage"
+        :page-sizes="pageSizes"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
+console.warn('表格父组件的根元素添加height:100%')
+
 defineProps({
   tableData: Array,
   tableColumn: Array,
-  total: Number
+  total: Number,
+  pagination: {
+    type: [String, Boolean],
+    default: true
+  }
 })
 const emits = defineEmits(['getData'])
 const currentPage = ref(1)
@@ -51,3 +67,33 @@ const handleCurrentChange = (val) => {
   emits('getData', currentPage.value, pageSize.value)
 }
 </script>
+<style lang="scss" scoped>
+.elTableCom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
+  .tableBox {
+    flex: 1;
+    overflow-y: hidden;
+  }
+  .h100 {
+    height: 100%;
+    // overflow-y: auto;
+  }
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    height: 50px;
+    align-items: flex-end;
+  }
+  ::v-deep .el-table th.gutter {
+    display: table-cell !important;
+  }
+  // ::v-deep .el-table::before {
+  //   height: 0;
+  // }
+}
+</style>

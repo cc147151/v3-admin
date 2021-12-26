@@ -7,9 +7,9 @@
       :style="{ backgroundColor: variables.menuBg }"
     />
     <div class="main-container">
-      <div class="fixed-header">
-        <navbar />
-      </div>
+        <div class="fixed-header">
+          <navbar />
+        </div>
       <app-main />
     </div>
   </div>

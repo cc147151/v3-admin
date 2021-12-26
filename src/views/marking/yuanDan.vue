@@ -1,5 +1,7 @@
 <template>
-  <div>活动管理</div>
+  <div>
+  <router-view />
+  </div>
 </template>
 <script>
 export default {}

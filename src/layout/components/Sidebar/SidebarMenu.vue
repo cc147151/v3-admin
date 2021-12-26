@@ -10,7 +10,7 @@
     >
       <sidebar-item
         :route="item"
-        v-for="item of privateRoutes"
+        v-for="item of menuRouters"
         :key="item.path"
       />
     </el-menu>
@@ -18,11 +18,15 @@
 <script setup>
 import SidebarItem from './SidebarItem.vue'
 import { computed } from 'vue'
-import { privateRoutes } from '@/router'
+import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 const route = useRoute()
+const store = useStore()
 const activeMenu = computed(() => {
   const { path } = route
   return path
+})
+const menuRouters = computed(() => {
+  return store.getters.menuRouters
 })
 </script>

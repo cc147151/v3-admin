@@ -38,7 +38,6 @@ service.interceptors.response.use(
     }
   },
   (err) => {
-    console.log(err.response)
     if (err.response) {
       const { data } = err.response
       if (data.code === 401) {

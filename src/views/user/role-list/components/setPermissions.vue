@@ -40,7 +40,6 @@ const props = defineProps({
   id: String
 })
 const emits = defineEmits(['update:modelValue'])
-console.log(emits)
 const defaultProps = {
   children: 'children',
   label: 'permissionName'
@@ -49,7 +48,6 @@ const tree = ref(null)
 const treeData = ref([])
 const checkedKeys = ref([])
 const getChecked = async () => {
-  console.log(tree.value.getCheckedKeys())
   await setPermission({
     permissions: tree.value.getCheckedKeys(),
     roleId: props.id

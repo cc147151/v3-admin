@@ -1,11 +1,12 @@
 <template>
   <div class="manage">
-    用户管理
+    <h3>用户列表</h3>
     <ElTableCom
       :tableColumn="tableColumn"
       :tableData="tableData"
       :total="total"
       @getData="getList"
+      class="f1"
     >
       <template v-slot:avatar="{ slotObj }">
         <el-avatar :size="50" :src="slotObj.avatar"></el-avatar>
@@ -47,6 +48,12 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .manage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .f1 {
+    flex: 1;
+  }
   ::v-deep .el-tag {
     margin-bottom: 5px;
   }

@@ -26,7 +26,6 @@ export default {
           password: md5(password)
         })
           .then((res) => {
-            console.log(res)
             context.commit('setToken', res.data.token)
             resolve(res)
           })
@@ -38,6 +37,7 @@ export default {
     async getUserInfo(context) {
       const { data } = await userInfo()
       context.commit('setUserInfo', data)
+      return data
     },
     loginOut(context) {
       context.commit('setToken', '')

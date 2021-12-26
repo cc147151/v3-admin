@@ -1,15 +1,12 @@
 <template>
-  <div class="">
+  <div class="role">
     角色列表
-    <ElTableCom :tableData="tableData" :tableColumn="tableColumn">
+    <ElTableCom :tableData="tableData" :tableColumn="tableColumn" :pagination="false">
       <template v-slot:action="{ slotObj }">
         <div>
           <el-button
             type="primary"
-            @click="
-              dialogVisible = true,
-              id = slotObj.id
-            "
+            @click=";(dialogVisible = true), (id = slotObj.id)"
             >分配权限</el-button
           >
         </div>
@@ -40,4 +37,9 @@ onMounted(async () => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .role {
+    padding-bottom: 20px;
+    height: 100%;
+  }
+</style>
