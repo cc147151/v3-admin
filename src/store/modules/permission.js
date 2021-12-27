@@ -62,7 +62,10 @@ function filterPrivateRoutes(menus, privateRoutes) {
             itemMenus.children,
             itemRouter.children
           )
-        } else {
+        } else if (itemMenus.children && itemMenus.children.length === 0) {
+          // 防止显示一个无子集的菜单
+          itemRouter.hidden = true
+          // 删掉是为了防止去注册路由
           delete itemRouter.children
         }
         return true

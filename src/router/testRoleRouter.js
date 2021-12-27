@@ -46,16 +46,16 @@ export const superAdminMenus = [
       icon: 'article'
     },
     children: [
-      {
-        path: '/article/ranking',
-        meta: {
-          title: '文章排名',
-          icon: 'article-ranking'
-        }
-      },
-      {
-        path: '/article/create'
-      }
+      // {
+      //   path: '/article/ranking',
+      //   meta: {
+      //     title: '文章排名',
+      //     icon: 'article-ranking'
+      //   }
+      // },
+      // {
+      //   path: '/article/create'
+      // }
     ]
   },
   {
@@ -78,18 +78,18 @@ export const superAdminMenus = [
           title: '活动主题'
         },
         children: [
-          {
-            path: '/marking/theme/yuanDan',
-            meta: {
-              title: '元旦活动'
-            }
-          },
-          {
-            path: '/marking/theme/newYear',
-            meta: {
-              title: '春节活动'
-            }
-          }
+          // {
+          //   path: '/marking/theme/yuanDan',
+          //   meta: {
+          //     title: '元旦活动'
+          //   }
+          // }
+          // {
+          //   path: '/marking/theme/newYear',
+          //   meta: {
+          //     title: '春节活动'
+          //   }
+          // }
         ]
       }
     ]
@@ -228,16 +228,16 @@ export const staffMenus = [
       icon: 'article'
     },
     children: [
-      {
-        path: '/article/ranking',
-        meta: {
-          title: '文章排名',
-          icon: 'article-ranking'
-        }
-      },
-      {
-        path: '/article/create'
-      }
+      // {
+      //   path: '/article/ranking',
+      //   meta: {
+      //     title: '文章排名',
+      //     icon: 'article-ranking'
+      //   }
+      // },
+      // {
+      //   path: '/article/create'
+      // }
     ]
   },
   {
