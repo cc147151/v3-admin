@@ -4,6 +4,7 @@ export const article = [
     path: '/article',
     component: layout,
     redirect: '/article/ranking',
+    name: 'Article',
     meta: {
       title: '文章',
       icon: 'article'

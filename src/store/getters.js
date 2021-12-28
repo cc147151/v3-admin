@@ -5,6 +5,7 @@ export default {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
   menuRouters: (state) => state.permission.menuRouters,
+  privateRoutesArr: (state) => state.permission.privateRoutesArr,
   language: (state) => state.app.language,
   cssVar: (state) => state.app.cssVar,
   sidebarOpened: (state) => state.app.sidebarOpened

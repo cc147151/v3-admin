@@ -4,6 +4,7 @@ export const user = [
     path: '/user',
     component: layout,
     redirect: '/user/manage',
+    name: 'User',
     meta: {
       title: '用户',
       icon: 'personnel'

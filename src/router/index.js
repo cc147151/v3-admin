@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { user, marking, article, visit } from './router'
+import store from '../store'
 import layout from '@/layout/index'
 /**
  * 私有路由表
@@ -13,7 +14,8 @@ export const publicRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
-    hidden: true
+    hidden: true,
+    name: 'login'
   },
   {
     path: '/test',
@@ -43,4 +45,9 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [...publicRoutes]
 })
+export const removeRoutes = () => {
+  store.getters.privateRoutesArr.forEach((item) => {
+    router.removeRoute(item.name)
+  })
+}
 export default router

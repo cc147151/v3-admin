@@ -16,13 +16,22 @@
           item.title
         }}</el-tag>
       </template>
+      <template v-slot:action="{ slotObj }">
+        <el-button type="text">查看</el-button>
+        <el-button type="text" @click="editRole(slotObj._id)" v-permission:distributeRole
+          >编辑</el-button
+        >
+        <el-button type="text" v-permission:removeUser>删除</el-button>
+      </template>
     </ElTableCom>
+    <EditRoleDialog v-model="roleVisible" :roleId="roleId" />
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
 import ElTableCom from '@/components/ElTableCom'
+import EditRoleDialog from './components/EditRoleDialog'
 import { manageList } from '@/api/user/manage'
 const tableColumn = [
   { prop: 'username', label: '姓名' },
@@ -30,10 +39,14 @@ const tableColumn = [
   { prop: 'avatar', label: '头像', slot: true },
   { prop: 'role', label: '角色', slot: true },
   { prop: 'openTime', label: '开通时间' },
-  { prop: 'action', label: '操作' }
+  { prop: 'action', label: '操作', slot: true }
 ]
 const tableData = ref([])
 const total = ref(0)
+
+//
+const roleVisible = ref(false)
+const roleId = ref('')
 const getList = async (page = 1, size = 10) => {
   const res = await manageList({
     page,
@@ -41,6 +54,10 @@ const getList = async (page = 1, size = 10) => {
   })
   tableData.value = res.data.list
   total.value = res.data.total
+}
+const editRole = (id) => {
+  roleId.value = id
+  roleVisible.value = true
 }
 onMounted(() => {
   getList()

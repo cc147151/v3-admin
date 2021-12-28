@@ -46,16 +46,16 @@ export const superAdminMenus = [
       icon: 'article'
     },
     children: [
-      // {
-      //   path: '/article/ranking',
-      //   meta: {
-      //     title: '文章排名',
-      //     icon: 'article-ranking'
-      //   }
-      // },
-      // {
-      //   path: '/article/create'
-      // }
+      {
+        path: '/article/ranking',
+        meta: {
+          title: '文章排名',
+          icon: 'article-ranking'
+        }
+      },
+      {
+        path: '/article/create'
+      }
     ]
   },
   {
@@ -72,24 +72,36 @@ export const superAdminMenus = [
         }
       },
       {
+        path: '/marking/manageDetail',
+        meta: {
+          title: '活动管理详情'
+        }
+      },
+      {
         path: '/marking/theme',
         redirect: '/marking/theme/yuanDan',
         meta: {
           title: '活动主题'
         },
         children: [
-          // {
-          //   path: '/marking/theme/yuanDan',
-          //   meta: {
-          //     title: '元旦活动'
-          //   }
-          // }
-          // {
-          //   path: '/marking/theme/newYear',
-          //   meta: {
-          //     title: '春节活动'
-          //   }
-          // }
+          {
+            path: '/marking/theme/yuanDan',
+            meta: {
+              title: '元旦活动'
+            }
+          },
+          {
+            path: '/marking/theme/newYear',
+            meta: {
+              title: '春节活动'
+            }
+          },
+          {
+            path: '/marking/theme/detail',
+            meta: {
+              title: '活动详情'
+            }
+          }
         ]
       }
     ]
@@ -102,6 +114,13 @@ export const superAdminMenus = [
         path: '/visit/index',
         meta: {
           title: '浏览量'
+        }
+      },
+      {
+        path: '/visit/detail',
+        // hidden: true
+        meta: {
+          title: '详情'
         }
       }
     ]
@@ -166,18 +185,6 @@ export const adminMenus = [
         path: '/article/create'
       }
     ]
-  },
-  {
-    path: '/visit',
-    redirect: '/visit/index',
-    children: [
-      {
-        path: '/visit/index',
-        meta: {
-          title: '浏览量'
-        }
-      }
-    ]
   }
 ]
 export const staffMenus = [
@@ -221,23 +228,51 @@ export const staffMenus = [
     ]
   },
   {
-    path: '/article',
-    redirect: '/article/ranking',
+    path: '/marking',
+    redirect: '/marking/active',
     meta: {
-      title: '文章',
-      icon: 'article'
+      title: '营销中心'
     },
     children: [
-      // {
-      //   path: '/article/ranking',
-      //   meta: {
-      //     title: '文章排名',
-      //     icon: 'article-ranking'
-      //   }
-      // },
-      // {
-      //   path: '/article/create'
-      // }
+      {
+        path: '/marking/active',
+        meta: {
+          title: '活动管理'
+        }
+      },
+      {
+        path: '/marking/manageDetail',
+        meta: {
+          title: '活动管理详情'
+        }
+      },
+      {
+        path: '/marking/theme',
+        redirect: '/marking/theme/yuanDan',
+        meta: {
+          title: '活动主题'
+        },
+        children: [
+          {
+            path: '/marking/theme/yuanDan',
+            meta: {
+              title: '元旦活动'
+            }
+          },
+          {
+            path: '/marking/theme/newYear',
+            meta: {
+              title: '春节活动'
+            }
+          },
+          {
+            path: '/marking/theme/detail',
+            meta: {
+              title: '活动详情'
+            }
+          }
+        ]
+      }
     ]
   },
   {

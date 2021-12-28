@@ -4,6 +4,7 @@ export const visit = [
     path: '/visit',
     component: layout,
     redirect: '/visit/index',
+    name: 'Visit',
     children: [
       {
         path: '/visit/index',

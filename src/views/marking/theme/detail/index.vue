@@ -1,7 +1,5 @@
 <template>
-  <div>
-  <router-view />
-  </div>
+  <div>详情</div>
 </template>
 <script>
 export default {}

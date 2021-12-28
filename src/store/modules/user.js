@@ -1,4 +1,4 @@
-import router from '@/router'
+import router, { removeRoutes } from '@/router'
 import { setItem, getItem, removeAllItem } from '../../utils/storage'
 import { TOKEN } from '@/constant'
 import { login, userInfo } from '@/api/sys.js'
@@ -43,6 +43,7 @@ export default {
       context.commit('setToken', '')
       context.commit('setUserInfo', {})
       removeAllItem()
+      removeRoutes()
       router.push('/login')
     }
   }

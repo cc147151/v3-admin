@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import directives from './directives'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -11,5 +13,6 @@ import './permission.js'
 import 'element-plus/dist/index.css'
 import './styles/index.scss'
 const app = createApp(App)
+app.use(directives)
 // app.use(ElementPlus)
 app.use(store).use(router).use(i18n).mount('#app')

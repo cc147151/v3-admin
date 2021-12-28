@@ -13,6 +13,7 @@ export const marking = [
     path: '/marking',
     component: layout,
     redirect: '/marking/active',
+    name: 'Marking',
     meta: {
       title: '营销中心'
     },
@@ -23,6 +24,14 @@ export const marking = [
           title: '活动管理'
         },
         component: () => import('@/views/marking/index')
+      },
+      {
+        hidden: true,
+        path: '/marking/manageDetail',
+        meta: {
+          title: '活动管理详情'
+        },
+        component: () => import('@/views/marking/manageDetail')
       },
       {
         path: '/marking/theme',
@@ -45,6 +54,14 @@ export const marking = [
             meta: {
               title: '春节活动'
             }
+          },
+          {
+            path: '/marking/theme/detail',
+            component: () => import('@/views/marking/theme/detail/index'),
+            meta: {
+              title: '活动详情'
+            },
+            hidden: true
           }
         ]
       }
