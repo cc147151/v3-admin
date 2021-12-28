@@ -28,7 +28,7 @@
     </div>
     <div class="pagination" v-if="pagination">
       <el-pagination
-        :currentPagee="currentPage"
+        :currentPage="currentPage"
         :page-sizes="pageSizes"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
@@ -41,7 +41,12 @@
   </div>
 </template>
 <script setup>
-import { defineProps, defineEmits, ref } from 'vue'
+/*
+  @fun:
+    getData 用来获取数据，外部可不使用该函数来发送请求(因为page页只可通过内部改变)，可以使用ref调用refreshPage
+    refreshPage 通过ref直接调用更新某一页数据(传入要更新的page页),不传参数则视为更新当前页
+*/
+import { defineProps, defineEmits, ref, defineExpose } from 'vue'
 console.warn('表格父组件的根元素添加height:100%')
 
 defineProps({
@@ -66,6 +71,15 @@ const handleCurrentChange = (val) => {
   currentPage.value = val
   emits('getData', currentPage.value, pageSize.value)
 }
+const refreshPage = (reset = '') => {
+  if (reset) {
+    currentPage.value = reset
+  }
+  emits('getData', currentPage.value, pageSize.value)
+}
+defineExpose({
+  refreshPage
+})
 </script>
 <style lang="scss" scoped>
 .elTableCom {

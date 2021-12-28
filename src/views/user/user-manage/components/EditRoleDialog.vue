@@ -35,7 +35,7 @@ const props = defineProps({
     type: [String, Number]
   }
 })
-const emits = defineEmits('update:modelValue')
+const emits = defineEmits('update:modelValue', 'refreshPage')
 onMounted(async () => {
   const res = await roleList()
   roleArr.value = res.data
@@ -54,6 +54,7 @@ const saveRole = async () => {
   })
   await updateRole(props.roleId, { roles })
   ElMessage.success('更新成功')
+  emits('refreshPage')
   emitClose()
 }
 </script>

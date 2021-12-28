@@ -39,7 +39,7 @@ const props = defineProps({
   modelValue: Boolean,
   id: String
 })
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue', 'getRoleList'])
 const defaultProps = {
   children: 'children',
   label: 'permissionName'
@@ -54,6 +54,7 @@ const getChecked = async () => {
   })
   emitClose()
   ElMessage.success('分配成功')
+  emits('getRoleList')
 }
 const emitClose = () => {
   checkedKeys.value = []

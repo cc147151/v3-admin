@@ -1,7 +1,8 @@
 <template>
   <div class="manage">
-    <h3>用户列表</h3>
+    <h3 @click="refreshPage(1)">用户列表</h3>
     <ElTableCom
+      ref="elTableCom"
       :tableColumn="tableColumn"
       :tableData="tableData"
       :total="total"
@@ -18,13 +19,20 @@
       </template>
       <template v-slot:action="{ slotObj }">
         <el-button type="text">查看</el-button>
-        <el-button type="text" @click="editRole(slotObj._id)" v-permission:distributeRole
+        <el-button
+          type="text"
+          @click="editRole(slotObj._id)"
+          v-permission:distributeRole
           >编辑</el-button
         >
         <el-button type="text" v-permission:removeUser>删除</el-button>
       </template>
     </ElTableCom>
-    <EditRoleDialog v-model="roleVisible" :roleId="roleId" />
+    <EditRoleDialog
+      v-model="roleVisible"
+      :roleId="roleId"
+      @refreshPage="refreshPage"
+    />
   </div>
 </template>
 
@@ -41,12 +49,14 @@ const tableColumn = [
   { prop: 'openTime', label: '开通时间' },
   { prop: 'action', label: '操作', slot: true }
 ]
+const elTableCom = ref(null)
 const tableData = ref([])
 const total = ref(0)
-
-//
 const roleVisible = ref(false)
 const roleId = ref('')
+onMounted(() => {
+  refreshPage(1)
+})
 const getList = async (page = 1, size = 10) => {
   const res = await manageList({
     page,
@@ -55,13 +65,13 @@ const getList = async (page = 1, size = 10) => {
   tableData.value = res.data.list
   total.value = res.data.total
 }
+const refreshPage = (page = '') => {
+  elTableCom.value.refreshPage(page)
+}
 const editRole = (id) => {
   roleId.value = id
   roleVisible.value = true
 }
-onMounted(() => {
-  getList()
-})
 </script>
 <style lang="scss" scoped>
 .manage {

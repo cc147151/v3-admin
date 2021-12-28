@@ -12,7 +12,7 @@
         </div>
       </template>
     </ElTableCom>
-    <setPermissions v-model="dialogVisible" :id="id" />
+    <setPermissions v-model="dialogVisible" :id="id" @getRoleList="getRoleList" />
   </div>
 </template>
 
@@ -31,10 +31,13 @@ const tableData = ref([])
 // const tableColumn = ref(column)
 const dialogVisible = ref(false)
 const id = ref('')
-onMounted(async () => {
+onMounted(() => {
+  getRoleList()
+})
+const getRoleList = async () => {
   const res = await roleList()
   tableData.value = res.data
-})
+}
 </script>
 
 <style lang="scss" scoped>
