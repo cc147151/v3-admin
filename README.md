@@ -1,24 +1,5 @@
 # v3-admin
+账号：super-admin/admin/test   
+密码：123456
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+src/router/testRoleRouter.js为各个用户登录之后返回的路由表（接口未返回路由表，故做一层拦截store/modules/permission.js的actions:getMenus）

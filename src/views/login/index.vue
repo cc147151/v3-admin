@@ -4,7 +4,7 @@
       <h3>用户登录</h3>
       <el-form :model="form" :rules="loginRules" ref="loginRef">
         <el-form-item prop="username">
-          <el-input v-model="form.username" placeholder="请输入账号">
+          <el-input v-model="form.username" placeholder="账号：super-admin/admin/test 密码：123456">
             <template #prefix>
               <div class="nameIcon">
                 <el-icon><user /></el-icon>
@@ -17,6 +17,7 @@
             @keydown.enter="toLogin()"
             v-model="form.password"
             placeholder="请输入密码"
+            show-password
           >
             <template #prefix>
               <div class="nameIcon">
@@ -45,14 +46,14 @@ const loginRules = ref({
   username: [
     {
       required: true,
-      message: 'Please input Activity username',
+      message: '请输入账号',
       trigger: 'blur'
     }
   ],
   password: [
     {
       required: true,
-      message: 'Please input Activity password',
+      message: '请输入密码',
       trigger: 'blur'
     }
   ]
