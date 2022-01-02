@@ -23,3 +23,19 @@ export const updateRole = (id, data) => {
     data
   })
 }
+export const deleteRow = (id) => {
+  return service({
+    url: '/user-manage/detele/' + id
+  })
+}
+
+/**
+ * 批量导入
+ */
+export const userBatchImport = (data) => {
+  return service({
+    url: '/user-manage/batch/import',
+    method: 'POST',
+    data
+  })
+}

@@ -1,7 +1,11 @@
 <template>
   <div class="role">
     角色列表
-    <ElTableCom :tableData="tableData" :tableColumn="tableColumn" :pagination="false">
+    <ElTableCom
+      :tableData="tableData"
+      :tableColumn="tableColumn"
+      :pagination="false"
+    >
       <template v-slot:action="{ slotObj }">
         <div>
           <el-button
@@ -12,7 +16,11 @@
         </div>
       </template>
     </ElTableCom>
-    <setPermissions v-model="dialogVisible" :id="id" @getRoleList="getRoleList" />
+    <setPermissions
+      v-model="dialogVisible"
+      :id="id"
+      @getRoleList="getRoleList"
+    />
   </div>
 </template>
 
@@ -41,8 +49,8 @@ const getRoleList = async () => {
 </script>
 
 <style lang="scss" scoped>
-  .role {
-    padding-bottom: 20px;
-    height: 100%;
-  }
+.role {
+  padding-bottom: 20px;
+  height: 100%;
+}
 </style>
