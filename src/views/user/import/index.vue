@@ -45,7 +45,6 @@ const getFormatData = (data) => {
   return arr
 }
 const beforeUpload = (file) => {
-  console.log(file)
   if (isExcel(file.name)) return true
   return false
 }
@@ -60,9 +59,7 @@ const save = async (data) => {
     await userBatchImport(paramsData.value)
     ElMessage.success('导入成功')
     router.back()
-  } catch (error) {
-    console.log(error)
-  }
+  } catch (error) {}
 }
 </script>
 
