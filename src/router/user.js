@@ -19,6 +19,14 @@ export const user = [
         }
       },
       {
+        path: '/user/menus',
+        component: () => import('@/views/user/menus/index'),
+        meta: {
+          title: '菜单管理',
+          icon: 'personnel-manage'
+        }
+      },
+      {
         path: '/user/role',
         component: () => import('@/views/user/role-list/index'),
         meta: {

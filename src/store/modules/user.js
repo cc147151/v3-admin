@@ -2,7 +2,7 @@ import router, { removeRoutes } from '@/router'
 import { setItem, getItem, removeAllItem } from '../../utils/storage'
 import { TOKEN } from '@/constant'
 import { login, userInfo } from '@/api/sys.js'
-import md5 from 'md5'
+// import md5 from 'md5'
 export default {
   namespaced: true,
   state: {
@@ -22,8 +22,8 @@ export default {
     login(context, { username, password }) {
       return new Promise((resolve, reject) => {
         login({
-          username,
-          password: md5(password)
+          userName: username,
+          userPwd: password
         })
           .then((res) => {
             context.commit('setToken', res.data.token)

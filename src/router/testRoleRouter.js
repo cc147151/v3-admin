@@ -15,6 +15,13 @@ export const superAdminMenus = [
         }
       },
       {
+        path: '/user/menus',
+        meta: {
+          title: '菜单管理',
+          icon: 'personnel-manage'
+        }
+      },
+      {
         path: '/user/role',
         meta: {
           title: '角色列表',
@@ -200,6 +207,13 @@ export const staffMenus = [
         path: '/user/manage',
         meta: {
           title: '用户管理',
+          icon: 'personnel-manage'
+        }
+      },
+      {
+        path: '/user/menus',
+        meta: {
+          title: '菜单管理',
           icon: 'personnel-manage'
         }
       },

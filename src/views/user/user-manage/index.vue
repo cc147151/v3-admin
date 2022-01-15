@@ -6,6 +6,9 @@
         <el-button class="button" @click="toImport">excel导入</el-button>
       </div>
     </el-card>
+    <el-button type="primary" style="width: 100px" @click="addRole"
+      >新增用户</el-button
+    >
     <ElTableCom
       ref="elTableCom"
       :tableColumn="tableColumn"
@@ -17,25 +20,25 @@
       <template v-slot:avatar="{ slotObj }">
         <el-avatar :size="50" :src="slotObj.avatar"></el-avatar>
       </template>
-      <template v-slot:role="{ slotObj }">
-        <el-tag v-for="(item, index) of slotObj.role" :key="index">{{
+      <!-- <template v-slot:roleList="{ slotObj }">
+        <el-tag v-for="(item, index) of slotObj.roleList" :key="index">{{
           item.title
         }}</el-tag>
-      </template>
-      <template v-slot:openTime="{ slotObj }">
-        <span>{{ formatTime(slotObj.openTime, 'ymd') }}</span>
+      </template> -->
+      <template v-slot:createTime="{ slotObj }">
+        <span>{{ formatTime(slotObj.createTime) }}</span>
       </template>
       <template v-slot:action="{ slotObj }">
         <el-button type="text">查看</el-button>
         <el-button
           type="text"
-          @click="editRole(slotObj._id)"
+          @click="editRole(slotObj)"
           v-permission:distributeRole
           >编辑</el-button
         >
         <el-button
           type="text"
-          @click="deleteFun(slotObj._id)"
+          @click="deleteFun(slotObj.userId)"
           v-permission:removeUser
           >删除</el-button
         >
@@ -43,7 +46,8 @@
     </ElTableCom>
     <EditRoleDialog
       v-model="roleVisible"
-      :roleId="roleId"
+      :roleObj="roleObj"
+      :action="action"
       @refreshPage="refreshPage"
     />
   </div>
@@ -54,51 +58,61 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import ElTableCom from '@/components/ElTableCom'
 import EditRoleDialog from './components/EditRoleDialog'
-import { manageList, deleteRow } from '@/api/user/manage'
+import { manageList, deleteRole } from '@/api/user/manage'
 import { formatTime } from '@/utils'
 import { ElMessageBox, ElMessage } from 'element-plus'
 const router = useRouter()
 const tableColumn = [
-  { prop: 'username', label: '姓名' },
+  { prop: 'userName', label: '姓名' },
   { prop: 'mobile', label: '联系方式' },
-  { prop: 'avatar', label: '头像', slot: true },
-  { prop: 'role', label: '角色', slot: true },
-  { prop: 'openTime', label: '开通时间', slot: true },
+  // { prop: 'avatar', label: '头像', slot: true },
+  // { prop: 'role', label: '角色', slot: true },
+  { prop: 'job', label: '岗位' },
+  { prop: 'createTime', label: '开通时间', slot: true },
   { prop: 'action', label: '操作', slot: true }
 ]
 const elTableCom = ref(null)
 const tableData = ref([])
 const total = ref(0)
 const roleVisible = ref(false)
-const roleId = ref('')
+const roleObj = ref({})
+const action = ref('add')
 onMounted(() => {
   refreshPage(1)
 })
 const getList = async (page = 1, size = 10) => {
   const res = await manageList({
-    page,
-    size
+    pageNum: page,
+    pageSize: size,
+    // userName: 'test',
+    state: 1 // 在职
   })
   tableData.value = res.data.list
-  total.value = res.data.total
+  total.value = res.data.page.total
 }
 const refreshPage = (page = '') => {
   elTableCom.value.refreshPage(page)
 }
-const editRole = (id) => {
-  roleId.value = id
+const addRole = () => {
+  roleObj.value = {}
+  action.value = 'add'
+  roleVisible.value = true
+}
+const editRole = (slotObj) => {
+  roleObj.value = slotObj
+  action.value = 'edit'
   roleVisible.value = true
 }
 const toImport = () => {
   router.push('/user/import')
 }
-const deleteFun = async (_id) => {
+const deleteFun = async (userId) => {
   await ElMessageBox.confirm('您确定要删除吗?', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning'
   })
-  await deleteRow(_id)
+  await deleteRole({ userIds: userId })
   ElMessage({
     type: 'success',
     message: '删除成功'

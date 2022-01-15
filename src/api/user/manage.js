@@ -2,30 +2,45 @@
 import service from '@/utils/request'
 export const manageList = (data) => {
   return service({
-    url: '/user-manage/list',
+    url: '/users/list',
     params: data
   })
 }
-export const roleList = () => {
+export const roleAllList = () => {
   return service({
-    url: '/role/list'
+    url: '/roles/allList'
   })
 }
-export const rolePerson = (id) => {
+export const menuList = () => {
   return service({
-    url: '/user-manage/role/' + id
+    url: '/menu/list'
+    // url: '/menu/list'
   })
 }
-export const updateRole = (id, data) => {
+export const menuOperate = (data) => {
   return service({
     method: 'post',
-    url: 'user-manage/update-role/' + id,
+    url: '/menu/operate',
     data
   })
 }
-export const deleteRow = (id) => {
+export const deptAllList = () => {
   return service({
-    url: '/user-manage/detele/' + id
+    url: '/dept/list'
+  })
+}
+export const updateRole = (data) => {
+  return service({
+    method: 'post',
+    url: '/users/operate',
+    data
+  })
+}
+export const deleteRole = (data) => {
+  return service({
+    method: 'post',
+    url: '/users/delete',
+    data
   })
 }
 

@@ -13,8 +13,13 @@ export const isExcel = (name) => {
     type: type==='ymd'仅返回年月日； 否则返回年月日时分秒
 */
 export const formatTime = (time, type) => {
+  console.log(time)
   if (!time || time === 'undefined') return ''
-  if (time.includes('/') || time.includes('-')) return time
+  if (time?.includes('T')) {
+    time = new Date(time) - 0 + ''
+  }
+  console.log(time)
+  if (time?.includes('/') || time?.includes('-')) return time
   let date = time
   date = new Date(time - 0)
   const pad = (n) => (n < 10 ? `0${n}` : n)

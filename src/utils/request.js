@@ -30,10 +30,10 @@ service.interceptors.response.use(
       if (otherCode.includes(res.code)) {
         return Promise.reject(res)
       }
-      if (res.success && res.code === 200) {
+      if (res.code === 200) {
         return Promise.resolve(res)
       }
-      ElMessage.error(res.message)
+      ElMessage.error(res.msg)
       return Promise.reject(res)
     }
   },
