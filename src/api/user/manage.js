@@ -6,11 +6,6 @@ export const manageList = (data) => {
     params: data
   })
 }
-export const roleAllList = () => {
-  return service({
-    url: '/roles/allList'
-  })
-}
 export const menuList = () => {
   return service({
     url: '/menu/list'

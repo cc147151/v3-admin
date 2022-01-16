@@ -81,7 +81,8 @@
 <script setup>
 import { defineProps, defineEmits, reactive, ref, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { updateRole, roleAllList, deptAllList } from '@/api/user/manage'
+import { updateRole, deptAllList } from '@/api/user/manage'
+import { roleAllList } from '@/api/user/role'
 const props = defineProps({
   modelValue: Boolean,
   action: String,
@@ -133,7 +134,7 @@ const emitClose = () => {
   })
   emits('update:modelValue', false)
 }
-const dialogOpen = async () => {
+const dialogOpen = () => {
   if (props.action === 'edit' && props.roleObj) {
     Object.keys(userForm).forEach((item) => {
       userForm[item] = props.roleObj[item]
@@ -143,7 +144,7 @@ const dialogOpen = async () => {
 onMounted(async () => {
   const res = await roleAllList()
   const dept = await deptAllList()
-  roleList.value = res.data
+  roleList.value = res.data.list
   deptList.value = dept.data
 })
 const saveRole = () => {
