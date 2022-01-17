@@ -38,11 +38,13 @@ export default {
         component: () => import('@/views/error-page/404'),
         hidden: true
       })
+      console.log(privateRoutesArr)
       // 处理一下一级菜单问题（只有一个子路由的时候该子路由就作为一级菜单显示）
       const menuRoutersArr = getMenuRoutersArr([
         ...publicRoutes,
         ...privateRoutesArr
       ])
+      console.log(menuRoutersArr)
       // 赋值
       context.commit('changePermissionState', {
         key: 'menuRouters',
@@ -61,17 +63,20 @@ export default {
 function filterPrivateRoutes(menus, privateRoutes) {
   let routerArr = []
   routerArr = privateRoutes.filter((itemRouter) => {
+    if (itemRouter.hidden) return true
     return menus.some((itemMenus) => {
       if (itemMenus.path === itemRouter.path) {
+        itemMenus.menuName && (itemRouter.meta.title = itemMenus.menuName)
+        itemMenus.icon && (itemRouter.meta.icon = itemMenus.icon)
         if (itemMenus.children && itemMenus.children.length > 0) {
           itemRouter.children = filterPrivateRoutes(
             itemMenus.children,
             itemRouter.children
           )
           // 经过筛选后发现后端返回children里只有需要菜单栏隐藏的路由，菜单栏会隐藏该路由
-          if (itemRouter.children.every((item) => item.hidden)) {
-            itemRouter.hidden = true
-          }
+          // if (itemRouter.children.every((item) => item.hidden)) {
+          //   itemRouter.hidden = true
+          // }
         } else if (itemMenus.children && itemMenus.children.length === 0) {
           // 防止显示一个无子集但是children为空数组的菜单   (super-admin账号的article)
           itemRouter.hidden = true
@@ -92,8 +97,9 @@ function filterPrivateRoutes(menus, privateRoutes) {
 function getMenuRoutersArr(allMenu) {
   return allMenu.map((item) => {
     if (item.children) {
-      if (item.children.filter((item) => !item.hidden).length === 1) {
-        item = item.children[0]
+      const levelArr = item.children.filter((item) => !item.hidden)
+      if (levelArr.length === 1) {
+        item = levelArr[0]
       }
     }
     return item

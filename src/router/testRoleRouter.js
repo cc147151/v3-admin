@@ -79,34 +79,22 @@ export const superAdminMenus = [
         }
       },
       {
-        path: '/marking/manageDetail',
-        meta: {
-          title: '活动管理详情'
-        }
-      },
-      {
         path: '/marking/theme',
         redirect: '/marking/theme/yuanDan',
         meta: {
           title: '活动主题'
         },
         children: [
-          {
-            path: '/marking/theme/yuanDan',
-            meta: {
-              title: '元旦活动'
-            }
-          },
+          // {
+          //   path: '/marking/theme/yuanDan',
+          //   meta: {
+          //     title: '元旦活动'
+          //   }
+          // },
           {
             path: '/marking/theme/newYear',
             meta: {
               title: '春节活动'
-            }
-          },
-          {
-            path: '/marking/theme/detail',
-            meta: {
-              title: '活动详情'
             }
           }
         ]
