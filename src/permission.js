@@ -11,10 +11,10 @@ router.beforeEach(async (to, from, next) => {
       return next('/')
     }
     if (!store.getters.hasUserInfo) {
-      const { permission } = await store.dispatch('user/getUserInfo')
+      const { permissionList } = await store.dispatch('user/getUserInfo')
       const privateRoutesArr = await store.dispatch(
         'permission/getMenus',
-        permission.menus
+        permissionList.menu
       )
       privateRoutesArr.map((item) => {
         router.addRoute(item)

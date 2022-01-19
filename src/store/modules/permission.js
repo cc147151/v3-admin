@@ -1,9 +1,9 @@
 import { privateRoutes, publicRoutes } from '@/router'
-import {
-  superAdminMenus,
-  adminMenus,
-  staffMenus
-} from '@/router/testRoleRouter'
+// import {
+//   superAdminMenus,
+//   adminMenus,
+//   staffMenus
+// } from '@/router/testRoleRouter'
 
 export default {
   namespaced: 'permission',
@@ -20,16 +20,16 @@ export default {
   actions: {
     async getMenus(context, menus) {
       // 改造成test数据
-      if (context.rootGetters.userInfo) {
-        const { userInfo } = context.rootGetters
-        if (userInfo.title === '超级管理员') {
-          menus = superAdminMenus
-        } else if (userInfo.title === '管理员') {
-          menus = adminMenus
-        } else {
-          menus = staffMenus
-        }
-      }
+      // if (context.rootGetters.userInfo) {
+      //   const { userInfo } = context.rootGetters
+      //   if (userInfo.title === '超级管理员') {
+      //     menus = superAdminMenus
+      //   } else if (userInfo.title === '管理员') {
+      //     menus = adminMenus
+      //   } else {
+      //     menus = staffMenus
+      //   }
+      // }
       // 从定义的私有路由表里筛选出后端返回的指定路由表
       const privateRoutesArr = filterPrivateRoutes(menus, privateRoutes)
       privateRoutesArr.push({
@@ -39,6 +39,7 @@ export default {
         hidden: true
       })
       console.log(privateRoutesArr)
+
       // 处理一下一级菜单问题（只有一个子路由的时候该子路由就作为一级菜单显示）
       const menuRoutersArr = getMenuRoutersArr([
         ...publicRoutes,
@@ -66,8 +67,12 @@ function filterPrivateRoutes(menus, privateRoutes) {
     if (itemRouter.hidden) return true
     return menus.some((itemMenus) => {
       if (itemMenus.path === itemRouter.path) {
-        itemMenus.menuName && (itemRouter.meta.title = itemMenus.menuName)
-        itemMenus.icon && (itemRouter.meta.icon = itemMenus.icon)
+        if (itemMenus.menuName && itemRouter.meta) {
+          itemRouter.meta.title = itemMenus.menuName
+        }
+        if (itemMenus.icon && itemRouter.meta) {
+          itemRouter.meta.icon = itemMenus.icon
+        }
         if (itemMenus.children && itemMenus.children.length > 0) {
           itemRouter.children = filterPrivateRoutes(
             itemMenus.children,

@@ -10,7 +10,8 @@ export const visit = [
         path: '/visit/index',
         component: () => import('@/views/visit/index.vue'),
         meta: {
-          title: '浏览量'
+          title: '浏览量',
+          icon: ''
         }
       },
       {
@@ -18,7 +19,8 @@ export const visit = [
         component: () => import('@/views/visit/detail/index.vue'),
         hidden: true,
         meta: {
-          title: '详情'
+          title: '详情',
+          icon: ''
         }
       }
     ]

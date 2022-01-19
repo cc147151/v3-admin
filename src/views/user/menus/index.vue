@@ -47,7 +47,7 @@ import { menuList, menuOperate } from '@/api/user/manage'
 import { ref, onMounted } from 'vue'
 import { ElMessageBox } from 'element-plus'
 import MenuDialog from './components/MenuDialog'
-const columns = [
+const columns = ref([
   {
     label: '菜单名称',
     prop: 'menuName',
@@ -98,7 +98,7 @@ const columns = [
       return formatTime(value)
     }
   }
-]
+])
 const menuVisible = ref(false)
 const action = ref('')
 const menuData = ref([])
@@ -121,8 +121,11 @@ const handleDel = async (_id) => {
     cancelButtonText: '取消',
     type: 'warning'
   })
-  await menuOperate({ action: 'delete', _id })
-  getMenuList()
+    .then(async () => {
+      await menuOperate({ action: 'delete', _id })
+      getMenuList()
+    })
+    .catch(() => {})
 }
 </script>
 

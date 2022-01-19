@@ -107,17 +107,20 @@ const toImport = () => {
   router.push('/user/import')
 }
 const deleteFun = async (userId) => {
-  await ElMessageBox.confirm('您确定要删除吗?', {
+  ElMessageBox.confirm('您确定要删除吗?', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning'
   })
-  await deleteRole({ userIds: userId })
-  ElMessage({
-    type: 'success',
-    message: '删除成功'
-  })
-  refreshPage()
+    .then(async () => {
+      await deleteRole({ userIds: userId })
+      ElMessage({
+        type: 'success',
+        message: '删除成功'
+      })
+      refreshPage()
+    })
+    .catch(() => {})
 }
 </script>
 <style lang="scss" scoped>

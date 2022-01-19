@@ -96,18 +96,21 @@ const getRoleList = async (page = 1, size = 10) => {
 const refreshPage = (page = '') => {
   elTableCom.value.refreshPage(page)
 }
-const deleteRole = async (_id) => {
-  await ElMessageBox.confirm('您确定要删除吗?', {
+const deleteRole = (_id) => {
+  ElMessageBox.confirm('您确定要删除吗?', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning'
   })
-  await roleOperate({ action: 'delete', _id })
-  ElMessage({
-    type: 'success',
-    message: '删除成功'
-  })
-  refreshPage()
+    .then(async () => {
+      await roleOperate({ action: 'delete', _id })
+      ElMessage({
+        type: 'success',
+        message: '删除成功'
+      })
+      refreshPage()
+    })
+    .catch(() => {})
 }
 </script>
 
