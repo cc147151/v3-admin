@@ -27,6 +27,12 @@ router.beforeEach(async (to, from, next) => {
     if (whiteRoutes.includes(to.path)) {
       return next()
     }
+    if (to.path === '/login') {
+      if (store.getters.menuRouters.length > 0) {
+        // 刷新情况vuex
+        location.reload()
+      }
+    }
     next('/login')
   }
 })

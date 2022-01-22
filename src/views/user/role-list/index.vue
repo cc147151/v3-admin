@@ -1,7 +1,7 @@
 <template>
   <div class="role">
     <div>
-      <p>角色列表</p>
+      <p>角色列表(test用户不展示分配权限)</p>
       <el-button
         type="primary"
         @click=";(action = 'add'), (roleData = {}), (roleVisible = true)"
@@ -32,6 +32,7 @@
             >编辑</el-button
           >
           <el-button
+            v-permission:user:role:edit
             type="primary"
             @click=";(dialogVisible = true), (roleData = slotObj)"
             >分配权限</el-button

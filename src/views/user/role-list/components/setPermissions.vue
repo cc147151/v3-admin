@@ -49,7 +49,7 @@ const tree = ref(null)
 const menuData = ref([])
 const checkedKeys = ref([])
 const getChecked = async () => {
-  console.log(tree.value.getCheckedNodes(false, true))
+  // console.log(tree.value.getCheckedNodes(false, true))
   await setRolePermission({
     _id: props.roleData._id,
     permissionList: {

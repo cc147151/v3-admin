@@ -31,7 +31,6 @@ const paramsData = ref('')
 const tableColumn = ref([])
 const tableData = ref([])
 const getFormatData = (data) => {
-  console.log(data)
   const arr = []
   data.forEach((item) => {
     const obj = {}

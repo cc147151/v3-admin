@@ -94,7 +94,6 @@ const columns = ref([
     label: '创建时间',
     prop: 'createTime',
     formatter(row, column, value) {
-      console.log(value)
       return formatTime(value)
     }
   }

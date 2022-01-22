@@ -42,9 +42,11 @@ export default {
     loginOut(context) {
       context.commit('setToken', '')
       context.commit('setUserInfo', {})
+      context.commit('setUserInfo', {})
       removeAllItem()
       removeRoutes()
-      router.push('/login')
+      router.replace('/login')
+      // location.href
     }
   }
 }

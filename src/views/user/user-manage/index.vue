@@ -33,13 +33,13 @@
         <el-button
           type="text"
           @click="editRole(slotObj)"
-          v-permission:distributeRole
+          v-permission:user:manage:edit
           >编辑</el-button
         >
         <el-button
+          v-permission:user:manage:edit
           type="text"
           @click="deleteFun(slotObj.userId)"
-          v-permission:removeUser
           >删除</el-button
         >
       </template>
