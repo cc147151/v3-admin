@@ -16,7 +16,6 @@ export default {
     async getMenus(context, menus) {
       // 从定义的私有路由表里筛选出后端返回的指定路由表
       const privateRoutesArr = filterPrivateRoutes(menus, privateRoutes)
-      console.log(privateRoutesArr)
       privateRoutesArr.push({
         path: '/:pathMatch(.*)*',
         name: '404',
@@ -43,7 +42,7 @@ export default {
     }
   }
 }
-// 从定义的私有路由表里筛选出后端返回的指定路由表，后续去添加路由
+// 遍历返回的菜单列表，把和本地相同的拿出来赋值给一个新的路由对象
 function filterPrivateRoutes(menus, privateRoutes) {
   return menus.map((itemMenu) => {
     const routeInfo = {}
