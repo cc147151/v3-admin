@@ -1,4 +1,9 @@
 .el-avatar {
-    background-color: none !important;
-    --el-avatar-background-color:none !important;
-  }
+  background-color: none !important;
+  --el-avatar-background-color: none !important;
+}
+.el-menu-item .svg {
+  width: 24px;
+  font-size: 18px;
+  color: rgb(191, 203, 217);
+}

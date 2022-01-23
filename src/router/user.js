@@ -7,7 +7,7 @@ export const user = [
     name: 'User',
     meta: {
       title: '用户',
-      icon: 'personnel'
+      icon: 'el-user'
     },
     children: [
       {
@@ -15,7 +15,7 @@ export const user = [
         component: () => import('@/views/user/user-manage/index'),
         meta: {
           title: '用户管理',
-          icon: 'personnel-manage'
+          icon: ''
         }
       },
       {
@@ -23,7 +23,7 @@ export const user = [
         component: () => import('@/views/user/menus/index'),
         meta: {
           title: '菜单管理',
-          icon: 'personnel-manage'
+          icon: ''
         }
       },
       {
@@ -31,7 +31,7 @@ export const user = [
         component: () => import('@/views/user/role-list/index'),
         meta: {
           title: '角色列表',
-          icon: 'role'
+          icon: ''
         }
       },
       {

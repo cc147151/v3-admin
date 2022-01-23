@@ -5,7 +5,7 @@
     :index="route.path"
   >
     <template #title>
-      <menu-item :title="route.meta && route.meta.title"></menu-item>
+      <menu-item :meta="route.meta"></menu-item>
     </template>
     <!-- 循环渲染 -->
     <sidebar-item
@@ -17,7 +17,7 @@
   <div v-else>
     <el-menu-item v-if="!route.hidden" :index="route.path">
       <!-- <menu-item :title="route.meta && route.meta.title"></menu-item> -->
-      <el-icon :size="10"><User /></el-icon>
+      <svg-icon v-if="route.meta.icon" :icon="route.meta.icon"></svg-icon>
       <template #title>{{ route.meta.title }}</template>
     </el-menu-item>
   </div>
@@ -25,7 +25,6 @@
 <script setup>
 import { defineProps } from 'vue'
 import MenuItem from './MenuItem.vue'
-import { User } from '@element-plus/icons'
 defineProps({
   route: {
     type: Object,

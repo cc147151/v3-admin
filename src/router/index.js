@@ -33,7 +33,7 @@ export const publicRoutes = [
         name: 'profile',
         component: () => import('@/views/profile/index'),
         meta: {
-          icon: 'el-icon-user',
+          icon: 'yonghu-yuan',
           title: '个人中心'
         }
       }

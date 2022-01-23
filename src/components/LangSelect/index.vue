@@ -1,9 +1,13 @@
 <template>
   <div>
     <el-dropdown trigger="click" @command="handleCommand">
-      <el-tooltip :content="$t('message.currentLanguage')" placement="bottom" effect="light">
+      <el-tooltip
+        :content="$t('message.currentLanguage')"
+        placement="bottom"
+        effect="light"
+      >
         <span class="el-dropdown-link">
-          <el-icon size="20"><info-filled /></el-icon>
+          <svg-icon icon="el-info-filled" :size="30" />
         </span>
       </el-tooltip>
       <template #dropdown>
@@ -24,7 +28,6 @@ import { computed } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import { useStore } from 'vuex'
-import { InfoFilled } from '@element-plus/icons'
 const i18n = useI18n()
 const store = useStore()
 const language = computed(() => store.getters.language)

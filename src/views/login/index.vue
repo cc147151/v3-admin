@@ -6,9 +6,7 @@
         <el-form-item prop="username">
           <el-input v-model="form.username" placeholder="账号：test 密码：123">
             <template #prefix>
-              <div class="nameIcon">
-                <el-icon><user /></el-icon>
-              </div>
+              <svg-icon icon="el-user" class="icon" />
             </template>
           </el-input>
         </el-form-item>
@@ -21,7 +19,7 @@
           >
             <template #prefix>
               <div class="nameIcon">
-                <el-icon><lock /></el-icon>
+                <svg-icon icon="el-lock" class="icon" />
               </div>
             </template>
           </el-input>
@@ -36,7 +34,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import { User, Lock } from '@element-plus/icons'
 import { useRouter } from 'vue-router'
 
 const store = useStore()
