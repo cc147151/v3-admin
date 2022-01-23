@@ -1,5 +1,7 @@
 # v3-admin
-账号：super-admin/admin/test   
-密码：123456
 
-src/router/testRoleRouter.js为各个用户登录之后返回的路由表（接口未返回路由表，故做一层拦截store/modules/permission.js的actions:getMenus）
+账号：admin/test  
+密码：123s
+
+本项目接口使用了 node+koa2+noSql，可以查看[csdn:node+koa+mongodb 搭建项目](https://blog.csdn.net/Angely_cc/article/details/122503329)
+接口代码：[github:mykoa](https://github.com/cc147151/mykoa)接口所用的表在 mykoa 项目里 colleation 文件夹里

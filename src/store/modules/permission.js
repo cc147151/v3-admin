@@ -63,9 +63,7 @@ function filterPrivateRoutes(menus, privateRoutes) {
     return routeInfo
   })
 }
-// 根的一级菜单一定要有children
 // 只处理一级菜单问题，嵌套的一级不在此（只有一个作为菜单子路由的时候该子路由就作为一级菜单显示）因为一级菜单有个需要对应layout的父组件
-// eg:visit浏览量菜单
 function getMenuRoutersArr(allMenu) {
   return allMenu.map((item) => {
     if (item.children) {
