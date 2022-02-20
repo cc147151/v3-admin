@@ -2,17 +2,20 @@ const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
+const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = {
+  productionSourceMap: false,
+  publicPath: './',
   devServer: {
     // 配置反向代理
     proxy: {
       // 当地址中有/api的时候会触发代理机制
       '/api': {
         // 要代理的服务器地址  这里不用写 api
-        target: 'http://192.168.0.106:3000',
+        target: 'http://192.168.0.105:3000',
         changeOrigin: true // 是否跨域
         // 后端接口是'https:xxx/api/xxx',需要/api这个字段，所以不能用下面代码
         // pathRewrite:{
@@ -23,6 +26,9 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()]
+      }),
       Components({
         resolvers: [ElementPlusResolver()]
       })

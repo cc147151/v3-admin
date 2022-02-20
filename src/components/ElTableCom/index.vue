@@ -4,8 +4,8 @@
       <el-table
         :data="tableData"
         border
+        v-bind="$attrs.heightStyle"
         stripe
-        height="100%"
         style="width: 100%"
       >
         <template v-for="(item, index) of tableColumn">
@@ -47,7 +47,9 @@
     refreshPage 通过ref直接调用更新某一页数据(传入要更新的page页),不传参数则视为更新当前页
 */
 import { defineProps, defineEmits, ref, defineExpose } from 'vue'
-console.warn('表格父组件的根元素添加height:100%')
+console.warn(
+  '表格父组件的根元素添加height:100%;给表格组件传个高度heightStyle;查看角色列表页面'
+)
 
 defineProps({
   tableData: Array,

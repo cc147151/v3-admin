@@ -8,6 +8,7 @@
         >添加角色</el-button
       >
     </div>
+    <!--  -->
     <ElTableCom
       ref="elTableCom"
       :tableData="tableData"
@@ -16,6 +17,7 @@
       :total="total"
       @getData="getRoleList"
       class="f1"
+      :heightStyle="{ height: '100%' }"
     >
       <template v-slot:createTime="{ slotObj }">
         <div>
