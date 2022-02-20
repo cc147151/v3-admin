@@ -4,10 +4,10 @@
 
 <script setup>
 import {} from 'vue'
-import { useStore } from 'vuex'
-const store = useStore()
+// import { useStore } from 'vuex'
+// const store = useStore()
 const changeBgc = () => {
-  store.commit('app/changeCssVar', { key: 'menuBg', value: 'red' })
+  // store.commit('app/changeCssVar', { key: 'menuBg', value: 'red' })
 }
 </script>
 

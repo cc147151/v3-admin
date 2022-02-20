@@ -1,5 +1,5 @@
 // 引入element-plus的icon注册全局，可以直接使用，组件里定义以el-开头的为element的icon
-import * as ElIcon from '@element-plus/icons'
+import * as ElIcon from '@element-plus/icons-vue'
 // 下载好的svg文件把 fill="#色值" （自带的色值）删掉,代码定义颜色才生效
 import SvgIcon from '@/components/SvgIcon'
 const requireSvg = require.context(

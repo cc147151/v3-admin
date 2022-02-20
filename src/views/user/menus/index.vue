@@ -18,14 +18,17 @@
           <el-button
             @click="menuAction('add', scope.row)"
             type="primary"
-            size="mini"
+            size="small"
             v-if="scope.row.menuType == '1'"
             >新增</el-button
           >
-          <el-button @click="menuAction('edit', scope.row)" size="mini"
+          <el-button @click="menuAction('edit', scope.row)" size="small"
             >编辑</el-button
           >
-          <el-button type="danger" size="mini" @click="handleDel(scope.row._id)"
+          <el-button
+            type="danger"
+            size="small"
+            @click="handleDel(scope.row._id)"
             >删除</el-button
           >
         </template>

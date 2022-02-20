@@ -11,14 +11,13 @@
 import { computed, defineProps } from 'vue'
 const props = defineProps({
   icon: String,
-  size: () => [String | Number],
+  size: [String, Number],
   color: () => String
 })
 const isElementIcon = computed(() => /^[e|E]l-/.test(props.icon))
 const iconName = computed(() => `#icon-${props.icon}`)
 const elIconName = computed(() => props.icon.substr(2))
 const style = computed(() => {
-  if (props.size && props.color) return {}
   return {
     ...(props.size ? { 'font-size': `${props.size}px` } : {}),
     ...(props.color ? { color: props.color } : {})

@@ -49,7 +49,7 @@ const beforeUpload = (file) => {
 }
 const uploadSuccess = async (data) => {
   paramsData.value = getFormatData(data.results)
-  // 预览
+  // 预览  预览时候的开通时间未处理
   tableColumn.value = data.header.map((item) => ({ prop: item, label: item }))
   tableData.value = data.results
 }

@@ -1,5 +1,4 @@
 import { privateRoutes, publicRoutes } from '@/router'
-
 export default {
   namespaced: 'permission',
   state: {
@@ -57,7 +56,10 @@ function filterPrivateRoutes(menus, privateRoutes) {
       routeInfo.meta.icon = itemMenu.icon
     }
     if (itemMenu.children) {
-      routeInfo.children = filterPrivateRoutes(itemMenu.children, obj.children)
+      routeInfo.children = [
+        ...filterPrivateRoutes(itemMenu.children, obj.children),
+        ...obj.children.filter((itemObj) => itemObj.hidden)
+      ]
     }
     // 就算itemMenu没有children，也要用find找到与之对应得本地路由（可能包含非菜单页面or 一级路由）
     return routeInfo
