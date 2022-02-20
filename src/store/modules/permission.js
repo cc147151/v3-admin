@@ -1,5 +1,4 @@
 import { privateRoutes, publicRoutes } from '@/router'
-
 export default {
   namespaced: 'permission',
   state: {

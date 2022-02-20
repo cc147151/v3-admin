@@ -9,7 +9,7 @@
     </div>
     <div class="right-menu">
       <Theme />
-      <LangSelect class="mr20"/>
+      <LangSelect class="mr20" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
@@ -37,7 +37,7 @@
   </div>
 </template>
 <script setup>
-import { Expand, Fold } from '@element-plus/icons'
+import { Expand, Fold } from '@element-plus/icons-vue'
 import store from '@/store'
 import Breadcrumb from './Breadcrumb.vue'
 import LangSelect from '@/components/LangSelect/index.vue'
