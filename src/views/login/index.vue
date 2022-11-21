@@ -4,7 +4,7 @@
       <h3>用户登录</h3>
       <el-form :model="form" :rules="loginRules" ref="loginRef">
         <el-form-item prop="username">
-          <el-input v-model="form.username" placeholder="账号：test 密码：123">
+          <el-input v-model="form.username" placeholder="账号：admin 密码：123">
             <template #prefix>
               <svg-icon icon="el-user" class="icon" />
             </template>
@@ -55,7 +55,7 @@ const loginRules = ref({
     }
   ]
 })
-const form = ref({ username: 'test', password: '123' })
+const form = ref({ username: 'admin', password: '123' })
 const toLogin = async () => {
   loginRef.value.validate(async (valid) => {
     if (!valid) {
@@ -69,8 +69,8 @@ const toLogin = async () => {
 <style lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
-$light_gray: #eee;
-$cursor: #fff;
+$light_gray: #ccc;
+$cursor: #409eff;
 .login-container {
   min-height: 100%;
   background-color: $bg;
@@ -101,7 +101,7 @@ $cursor: #fff;
         border: 0px;
         -webkit-appearance: none;
         border-radius: 0px;
-        padding: 12px 5px 12px 30px;
+        // padding: 12px 5px 12px 30px;
         color: $light_gray;
         // height: 47px;
         caret-color: $cursor;

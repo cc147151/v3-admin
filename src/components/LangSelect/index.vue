@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dropdown trigger="click" @command="handleCommand">
+    <!-- <el-dropdown trigger="click" @command="handleCommand">
       <el-tooltip
         :content="$t('message.currentLanguage')"
         placement="bottom"
@@ -20,21 +20,21 @@
           }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
-    </el-dropdown>
+    </el-dropdown> -->
   </div>
 </template>
 <script setup>
-import { computed } from 'vue'
-import { ElMessage } from 'element-plus'
-import { useI18n } from 'vue-i18n'
-import { useStore } from 'vuex'
-const i18n = useI18n()
-const store = useStore()
-const language = computed(() => store.getters.language)
-const handleCommand = (command) => {
-  i18n.locale.value = command
-  store.commit('app/changeLanguage', command)
-  ElMessage(i18n.t('message.toastMessage'))
-}
+// import { computed } from 'vue'
+// import { ElMessage } from 'element-plus'
+// import { useI18n } from 'vue-i18n'
+// import { useStore } from 'vuex'
+// const i18n = useI18n()
+// const store = useStore()
+// const language = computed(() => store.getters.language)
+// const handleCommand = (command) => {
+//   i18n.locale.value = command
+//   store.commit('app/changeLanguage', command)
+//   ElMessage(i18n.t('message.toastMessage'))
+// }
 </script>
 <style lang="scss" scoped></style>
